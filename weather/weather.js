@@ -14,5 +14,7 @@ $.getJSON(weatherAlertsUrl, function(data) {
 });
 L.geoJSON(data, {
   style: { color: 'orange' },
-  // more options go here
+  onEachFeature: function(feature, layer) {
+  layer.bindPopup(feature.properties.headline);
+}
 }).addTo(map);
